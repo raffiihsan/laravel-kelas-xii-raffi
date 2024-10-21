@@ -119,11 +119,13 @@
             <a href="#">Comments</a>
             <div class="agile-info-wthree-box">
               <form>
-                <input type="text" placeholder="Name" required="">			           					   
-                <input type="text" placeholder="Email" required="">
-                <input type="text" placeholder="Phone" required="">
                 <textarea placeholder="Message" required=""></textarea>
+                @if(Auth::check())
+
                 <input type="submit" value="SEND">
+                @else 
+                 <p>kamu belom masuk</p>
+                 @endif
                 <div class="clearfix"> </div>
               </form>
             </div>
