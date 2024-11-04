@@ -29,7 +29,10 @@ class KritikController extends Controller
      */
     public function store(StoreKritikRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['film_id'] = $request->input (key: 'film_id');
+        kritik::create(attributes: $data);
+        return redirect()->back();
     }
 
     /**
@@ -37,7 +40,7 @@ class KritikController extends Controller
      */
     public function show(Kritik $kritik)
     {
-        //
+        return view('kritik.show', compact('kritik'));
     }
 
     /**
@@ -45,7 +48,7 @@ class KritikController extends Controller
      */
     public function edit(Kritik $kritik)
     {
-        //
+        return view('kritik.edit', compact('kritik'));
     }
 
     /**
@@ -61,6 +64,7 @@ class KritikController extends Controller
      */
     public function destroy(Kritik $kritik)
     {
-        //
+        $kritik->delete();
+        return redirect()->route('kritik.index')->with('success', 'Kritik berhasil dihapus.');
     }
 }
